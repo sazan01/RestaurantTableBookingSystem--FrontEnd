@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Crunchy Restaurant</title>
+      <!--meta tags -->
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+      
+      <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+     <link rel="stylesheet" href="css/fontawesome-all.css"> 
+	  <link href="css/simpleLightbox.css" rel='stylesheet' type='text/css' />
+	  <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
+      <link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+   <script src="js/jquery.js"></script>
+   <script>
+   $(document).ready(function(){
+	   var tok = localStorage.getItem('token');
+	   $("#logout").click(function(){
+        $.ajax({
+     type: 'post',
+     url: 'http://localhost:3000/users/logout',
+     beforeSend: function(xhr) {
+       if (tok) {
+         xhr.setRequestHeader('Authorization', 'Bearer ' + tok);
+       }
+     },
+     success: function(data) {
+      location.href="../LoginRegis/signin.html";
+                                     
+        },
+  
+     error: function() {
+       //alert("Sorry, you are not logged in.");
+       location.href="../LoginRegis/signin.html";
+     }
+   });
+      });   
+        })
+    </script> 
+  </head>
+    <body>
+   <!-- Navigation -->
+<header>
+  <div class="top-nav">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand text-Capitalize Each Word" href="index.html">Crunchy Restaurant</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center pr-md-4" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home </a>
+            </li>
+
+          	<li class="nav-item">
+				<a class="nav-link" href="book.html">BookTable</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="orderfood.html">OrderFood</a>
+        </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About </a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="gallery.html">Gallery <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="updateuserdetail.html">UpdateDetail</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+                <button id="logout" type="submit" class="btn btn-info btn-fill pull-right">Logout</button>
+             </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<br/><br/>
+<hr>
+<div class="banner-bottom py-5" id="gallery">
+		<div class="container py-md-3">
+			 <div class="w3-head-all mb-3">
+		         <h3>Our Gallery</h3>
+		       </div>
+			<div class="row inner-sec">
+
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 proj_gallery_grid" data-aos="zoom-in">
+					<div class="section_1_gallery_grid">
+						<a title="Rooms" href="images/g1.jpg" class="img-fluid">
+							<div class="section_1_gallery_grid1">
+								<img src="images/g1.jpg" alt=" " class="img-fluid" />
+								<div class="proj_gallery_grid1_pos">
+									<h3>Rooms</h3>
+									
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="section_1_gallery_grid" data-aos="zoom-in">
+						<a title="Meeting Hall" href="images/g2.jpg" class="img-fluid">
+							<div class="section_1_gallery_grid1">
+								<img src="images/g2.jpg" alt=" " class="img-fluid" />
+								<div class="proj_gallery_grid1_pos">
+									<h3>Beds</h3>
+								
+								</div>
+							</div>
+						</a>
+					</div>
+
+				</div>
+				<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 proj_gallery_grid" data-aos="zoom-in">
+					<div class="section_1_gallery_grid">
+						<a title="Cafe" href="images/g3.jpg" class="img-fluid">
+							<div class="section_1_gallery_grid1">
+								<img src="images/g3.jpg" alt=" " class="img-fluid" />
+								<div class="proj_gallery_grid1_pos">
+									<h3>Sofas</h3>
+									
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="section_1_gallery_grid" data-aos="zoom-in">
+						<a title="Beds" href="images/g4.jpg" class="img-fluid">
+							<div class="section_1_gallery_grid1">
+								<img src="images/g4.jpg" alt=" " class="img-fluid" />
+								<div class="proj_gallery_grid1_pos">
+									<h3>Sea Foods</h3>
+								
+								</div>
+							</div>
+						</a>
+					</div>
+
+				</div>
+		<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 proj_gallery_grid" data-aos="zoom-in">
+				<div class="row">
+				<div class="col-lg-12 col-md-6 col-sm-6 pr-lg-3 pr-2 section_1_gallery_grid">
+				<a title="Sea Foods" href="images/g5.jpg" class="img-fluid">
+				<div class="section_1_gallery_grid1">
+				<img src="images/g5.jpg" alt=" " class="img-fluid">
+				<div class="proj_gallery_grid1_pos">
+				<h3>Coffee</h3>
+				
+				</div>
+				</div>
+				</a>
+				</div>
+				<div class="col-lg-12 col-md-6 col-sm-6 pl-lg-3 pl-2 section_1_gallery_grid" data-aos="zoom-in">
+				<a title="Healthy Foods" href="images/g6.jpg" class="img-fluid">
+				<div class="section_1_gallery_grid1">
+				<img src="images/g6.jpg" alt=" " class="img-fluid">
+				<div class="proj_gallery_grid1_pos">
+				<h3>Fruits</h3>
+				
+				</div>
+				</div>
+				</a>
+				</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<section class="newsletter text-center py-5">
+  <div class="container py-lg-3">
+    <div class="subscribe_inner">
+      <h4 class="mb-4">Subscribe Us</h4>
+      <p class="mb-4">Subscribe to our Newsletter to get latest offers from our Chief. </p>
+      <form action="#" method="post" class="subscribe_form">
+        <input class="form-control" type="email" placeholder="Enter Your Email..." required="">
+        <button type="submit" class="btn1 btn-primary submit"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+      </form>
+      <div class="social mt-5">
+        <ul class="d-flex mt-4 justify-content-center">
+          <li class="mx-2"><a href="https://www.facebook.com/"><span class="fab fa-facebook-f"></span></a></li>
+          <li class="mx-2"><a href="https://www.twitter.com/"><span class="fab fa-twitter"></span></a></li>
+          <li class="mx-2"><a href="https://www.gmail.com/"><span class="fab fa-google-plus"></span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright mt-5">
+      <p>© 2019 Crunchy Restaurant. All Rights Reserved | Design by Sajan Manandhar </p>
+    </div>
+  </div>
+</section>
+<!-- //footer section -->
+    <!-- Vertically centered Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center" id="exampleModalLongTitle"> Hotel zone</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+    <img src="images/ban5.jpg" class="img-fluid mb-3" alt="Modal Image" />
+         </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- //Vertically centered Modal -->
+      <script src='js/jquery-2.2.3.min.js'></script>
+      <!-- //js  working-->
+     
+  <!-- Banner Responsive slider -->
+  <script src="js/responsiveslides.min.js"></script>
+  <script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+      // Slideshow 4
+      $("#slider4").responsiveSlides({
+        auto: true,
+        pager: false,
+        nav: true,
+        speed: 500,
+        namespace: "callbacks",
+        before: function () {
+          $('.events').append("<li>before event fired.</li>");
+        },
+        after: function () {
+          $('.events').append("<li>after event fired.</li>");
+        }
+      });
+
+    });
+  </script>
+  <!-- // Banner Responsive slider -->
+
+      <!--// banner-->
+    <!-- simpleLightbox -->
+  <script src="js/simpleLightbox.js"></script>
+  <script>
+    $('.proj_gallery_grid a').simpleLightbox();
+  </script>
+  <!-- //simpleLightbox -->
+<!-- flexSlider -->
+  <script defer src="js/jquery.flexslider.js"></script>
+  <script>
+    $(window).load(function () {
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function (slider) {
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+
+  <!-- //flexSlider -->
+<!-- Calendar -->
+        <link rel="stylesheet" href="css/jquery-ui.css" />
+        <script src="js/jquery-ui.js"></script>
+          <script>
+              $(function() {
+              $( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
+              });
+          </script>
+      <!-- //Calendar -->
+      <!-- odometer-script -->
+  <script src="js/odometer.js"></script>
+  <script>
+    window.odometerOptions = {
+      format: '(ddd).dd'
+    };
+  </script>
+  <script>
+    setTimeout(function () {
+      jQuery('#w3l_stats1').html(25);
+    }, 1500);
+  </script>
+  <script>
+    setTimeout(function () {
+      jQuery('#w3l_stats2').html(330);
+    }, 1500);
+  </script>
+  <script>
+    setTimeout(function () {
+      jQuery('#w3l_stats3').html(542);
+    }, 1500);
+  </script>
+  <script>
+    setTimeout(function () {
+      jQuery('#w3l_stats4').html(222);
+    }, 1500);
+  </script>
+  <!-- //odometer-script -->
+
+      <!-- start-smoth-scrolling -->
+      <script  src="js/move-top.js"></script>
+      <script  src="js/easing.js"></script>
+      <script >
+         jQuery(document).ready(function ($) {
+          $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+          });
+         });
+      </script>
+      <!-- start-smoth-scrolling -->
+      <!-- here stars scrolling icon -->
+      <script>
+         $(document).ready(function () {
+          /*
+            var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear' 
+            };
+          */
+         
+          $().UItoTop({ easingType: 'easeOutQuart' });
+         
+         });
+      </script>
+      <!-- //here ends scrolling icon -->
+      <!--bootstrap working-->
+      <script src="js/bootstrap.js"></script>
+      <!-- //bootstrap working-->
+   </body>
+</html>

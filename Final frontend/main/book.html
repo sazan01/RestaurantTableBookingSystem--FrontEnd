@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Crunchy Restaurant</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script>
+         addEventListener("load", function () {
+         	setTimeout(hideURLbar, 0);
+         }, false);
+         
+         function hideURLbar() {
+         	window.scrollTo(0, 1);
+         }
+      </script>  
+      <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+     <link rel="stylesheet" href="css/fontawesome-all.css"> 
+	  <link href="css/simpleLightbox.css" rel='stylesheet' type='text/css' />
+	  <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
+      <link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+   <script src="js/jquery.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+        var tok = localStorage.getItem('token');
+   $("#btnBook").click(function (e) {
+    e.preventDefault();
+    let data = {
+        date: $("#date").val(),
+        time: $("#time").val(),
+        num: $("#num").val(),
+        name: $("#name").val()
+    };
+    console.log(data);
+    $.ajax({
+        type: 'POST',
+        url:"http://localhost:3000/reserveTable",
+        data: data,
+        success: function (hero) {
+            alert("Booking Reserved Successfully");
+            location.href = "book.html";
+        },
+        error: function () {
+            alert("Fill all the form fields!");
+        }
+    });
+}); 
+
+  
+	   $("#logout").click(function(){
+        $.ajax({
+     type: 'post',
+     url: 'http://localhost:3000/users/logout',
+     beforeSend: function(xhr) {
+       if (tok) {
+         xhr.setRequestHeader('Authorization', 'Bearer ' + tok);
+       }
+     },
+     success: function(data) {
+      location.href="../LoginRegis/signin.html";
+                                     
+        },
+  
+     error: function() {
+       //alert("Sorry, you are not logged in.");
+       location.href="../LoginRegis/signin.html";
+     }
+   });
+      });   
+
+})   
+</script>
+  </head>
+  <body>
+ 
+<header>
+  <div class="top-nav">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand text-Capitalize Each Word" href="index.html">Crunchy Restaurant</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center pr-md-4" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home </a>
+            </li>
+
+            <li class="nav-item active" >
+              <a class="nav-link" href="book.html">BookTable</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="orderfood.html">OrderFood</a>
+              </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="updateuserdetail.html">UpdateDetail</a>
+              </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+                <button id="logout" type="submit" class="btn btn-info btn-fill pull-right">Logout</button>
+             </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<br/><br/><hr>
+
+<section class="table-area section-padding">
+  <div class="bookcontainer">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="top2text text-center">
+                  <h3>Book <span>your</span> table</h3>
+                  <p><i>Beast kind form divide night above let moveth bearing darkness.</i></p>
+              </div>
+          </div>
+      </div>
+      
+          <div class="boooktable">
+              <form method="POST" class="subscribe_form">
+                <div class="input-group mb-3">
+                 <label>Date:</label><input type="date" id="date">
+              </div>
+              <div class="input-group mb-3">
+                <label>Time:</label> <input type="time" id="time">
+                </div>
+
+                <div class="input-group mb-3">
+                  <label>No of People:</label> <input type="text" id="num" placeholder="Number of People">
+                </div>
+
+              <div class="input-group mb-3">
+                <label>Your Name:</label><input type="text" placeholder="Enter Your Name" id="name">
+              </div>
+              <div >
+                 <button type="submit" class="table-btn btn-success text-center" id="btnBook">Book a Table</button>
+              </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="newsletter text-center py-5">
+  <div class="container py-lg-3">
+    <div class="subscribe_inner">
+      <h4 class="mb-4">Subscribe Us</h4>
+      <p class="mb-4">Subscribe to our Newsletter to get latest offers from our Chief. </p>
+      <form action="#" method="post" class="subscribe_form">
+        <input class="form-control" type="email" placeholder="Enter Your Email..." required="">
+        <button type="submit" class="btn1 btn-primary submit"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+      </form>
+      <div class="social mt-5">
+        <ul class="d-flex mt-4 justify-content-center">
+          <li class="mx-2"><a href="https://www.facebook.com/"><span class="fab fa-facebook-f"></span></a></li>
+          <li class="mx-2"><a href="https://www.twitter.com/"><span class="fab fa-twitter"></span></a></li>
+          <li class="mx-2"><a href="https://www.gmail.com/"><span class="fab fa-google-plus"></span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright mt-5">
+      <p>© 2019 Crunchy Restaurant. All Rights Reserved | Design by Sajan Manandhar </p>
+    </div>
+  </div>
+</section>
+      </script>
+      <script src="js/bootstrap.js"></script>
+      <script src="js/jquery.js"></script>
+   </body>
+</html>

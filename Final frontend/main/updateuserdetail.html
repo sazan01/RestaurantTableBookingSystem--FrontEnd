@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Crunchy Restaurant</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+      <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+     <link rel="stylesheet" href="css/fontawesome-all.css"> 
+	  <link href="css/simpleLightbox.css" rel='stylesheet' type='text/css' />
+	  <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
+      <link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+   <script src="js/jquery.js"></script>
+     <script>
+        $(document).ready(function() {
+          var tok= localStorage.getItem("token");              
+          
+        $.ajax({
+    type: 'get',
+    url: "http://localhost:3000/users/me",
+    beforeSend: function(xhr) {
+      if (tok) {
+        xhr.setRequestHeader('Authorization', 'Bearer ' + tok);
+      }
+    },
+
+ success: function(data) {
+
+   $('#name').val(data.name);
+   $('#email').val(data.email);
+   $('#usertype').val(data.usertype);
+   $('#pass').val(data.pass);
+
+  var id = data._id;
+  var name = data.name;
+  var email = data.email;
+  var usertype = data.usertype;
+  var pass = data.pass;
+ },
+ error: function() {
+  alert("Sorry, you are not logged in.");
+  location.href="#";
+ }
+});
+
+$("#btnUpdate").click(function(e){
+  e.preventDefault();
+  name = $("#name").val();
+  email = $("#email").val();
+  usertype = $("#usertype").val();
+  pass = $("#pass").val();
+   user = {
+   "name" : name,
+   "email" : email,
+   "usertype" : usertype,
+   "pass" : pass
+   }
+   console.log(user);
+  $.ajax({
+    type: 'PUT',
+    url: "http://localhost:3000/updateuserdetail",
+    data: user,
+    success: function(result){
+      alert(result);
+    }, 
+    beforeSend: function(xhr){
+      if(tok){
+        xhr.setRequestHeader('Authorization', 'Bearer ' + tok);
+      }
+    },
+  });
+});
+                     
+ 
+	   $("#logout").click(function(){
+        $.ajax({
+     type: 'post',
+     url: 'http://localhost:3000/users/logout',
+     beforeSend: function(xhr) {
+       if (tok) {
+         xhr.setRequestHeader('Authorization', 'Bearer ' + tok);
+       }
+     },
+     success: function(data) {
+      location.href="../LoginRegis/signin.html";
+                                     
+        },
+  
+     error: function() {
+       //alert("Sorry, you are not logged in.");
+       location.href="../LoginRegis/signin.html";
+     }
+   });
+      });   
+   
+        })
+
+</script> 
+</head>
+   <body>
+   <!-- Navigation -->
+<header>
+	<div class="top-nav">
+		<div class="container-fluid">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<a class="navbar-brand text-Capitalize Each Word" href="index.html">Crunchy Restaurant</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-center pr-md-4" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="book.html">BookTable</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="orderfood.html">OrderFood</a>
+                         </li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="about.html">About</a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="gallery.html">Gallery</a>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="updateuserdetail.html">UpdateDetail</a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="contact.html">Contact</a>
+            </li>
+            <li class="nav-item">
+                <button id="logout" type="submit" class="btn btn-info btn-fill pull-right">Logout</button>
+             </li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+</header>
+<br/><br/><hr>
+<section class="table-area1 section-padding text-center">
+        <h1 class= "text-primary"><font size=20>User Detail Update</font></h1> 
+      <form method="POST" class="updateform" >
+        <div class="form-group">
+           <label class="text-success"><font size=4>Name:</font></label> <input type="text" name="name" id="name" placeholder="Your Name"/>
+        </div>
+        <div class="form-group">
+            <label class="text-success"><font size=4>Email:</font></label><input type="email" name="email" id="email" placeholder="Your Email"/>
+        </div>
+        <div class="form-group">
+            <label class="text-success"><font size=4>UserType:</font></label><input type="text" name="usertype" id="usertype" value = "User" placeholder="User" readonly/>
+        </div>
+        <div class="form-group">
+           <label class="text-success"><font size=4>Password:</font></label> <input type="password" name="pass" id="pass" placeholder="Password"/>
+        </div>
+            <input type="submit" class="btn btn-success"  value="Update" id="btnUpdate"/>
+        
+    </form>
+</section>
+   <section class="newsletter text-center py-5">
+  <div class="container py-lg-3">
+    <div class="subscribe_inner">
+      <h4 class="mb-4">Subscribe Us</h4>
+      <p class="mb-4">Subscribe to our Newsletter to get latest offers from our Chief. </p>
+      <form action="#" method="post" class="subscribe_form">
+        <input class="form-control" type="email" placeholder="Enter Your Email..." required="">
+        <button type="submit" class="btn1 btn-primary submit"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+      </form>
+      <div class="social mt-5">
+        <ul class="d-flex mt-4 justify-content-center">
+          <li class="mx-2"><a href="https://www.facebook.com/"><span class="fab fa-facebook-f"></span></a></li>
+          <li class="mx-2"><a href="https://www.twitter.com/"><span class="fab fa-twitter"></span></a></li>
+          <li class="mx-2"><a href="https://www.gmail.com/"><span class="fab fa-google-plus"></span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright mt-5">
+      <p>© 2019 Crunchy Restaurant. All Rights Reserved | Design by Sajan Manandhar </p>
+    </div>
+  </div>
+</section>
+      </script>
+      <script src="js/bootstrap.js"></script>
+      <script src="js/jquery.js"></script>
+
+</body>
+</html>

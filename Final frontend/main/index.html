@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Crunchy Restaurant</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+     <link rel="stylesheet" href="css/fontawesome-all.css"> 
+	  <link href="css/simpleLightbox.css" rel='stylesheet' type='text/css' />
+	  <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" property="" />
+      <link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+   <script src="js/jquery.js"></script>
+   <script>
+   $(document).ready(function(){
+	   var tok = localStorage.getItem('token');
+	   $("#logout").click(function(){
+        $.ajax({
+     type: 'post',
+     url: 'http://localhost:3000/users/logout',
+     beforeSend: function(xhr) {
+       if (tok) {
+         xhr.setRequestHeader('Authorization', 'Bearer ' + tok);
+       }
+     },
+     success: function(data) {
+      location.href="../LoginRegis/signin.html";
+                                     
+        },
+  
+     error: function() {
+       //alert("Sorry, you are not logged in.");
+       location.href="../LoginRegis/signin.html";
+     }
+   });
+      });   
+        })
+    </script>
+</head>
+   <body>
+   <!-- Navigation -->
+<header>
+	<div class="top-nav">
+		<div class="container-fluid">
+			<nav class="navbar navbar-expand-lg navbar-light">
+				<a class="navbar-brand text-Capitalize Each Word" href="index.html">Crunchy Restaurant</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-center pr-md-4" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="book.html">BookTable</a>
+						</li>
+
+						<li class="nav-item">
+								<a class="nav-link" href="orderfood.html">OrderFood</a>
+							  </li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="about.html">About</a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="gallery.html">Gallery</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="updateuserdetail.html">UpdateDetail</a>
+						</li>
+						
+						<li class="nav-item">
+							<a class="nav-link" href="contact.html">Contact</a>
+						</li>
+						<li class="nav-item">
+								<button id="logout" type="submit" class="btn btn-info btn-fill pull-right">Logout</button>
+							 </li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
+</header>
+<!-- //Navigation -->
+<!--Slider-->
+
+	<div class="services py-5" id="services">
+		<div class="container py-md-3">
+		<div class="w3-head-all mb-3 w3-head-col">
+		         <h3>Our Services</h3>
+		       </div>
+			<div class="row w3-services-grids mt-md-5 mt-3">
+				<div class="col-md-4 w3l-services-grid">
+					<div class="w3ls-services-img">
+						<i class="fas fa-home"></i>
+					</div>
+					<div class="agileits-services-info">
+						<h4 class="my-sm-3 my-2">Largest Restaurant</h4>
+						<p>A fast food restaurant is a specific type of restaurant that is defined by minimal table service and cuisine that is quickly prepared.  </p>
+					</div>
+				</div>
+				<div class="col-md-4 w3l-services-grid mt-sm-5 mt-3">
+					<div class="w3ls-services-img">
+						<i class="fas fa-globe"></i>
+					</div>
+					<div class="agileits-services-info">
+						<h4 class="my-sm-3 my-2">Larges Destinations</h4>
+						<p>The travelling public has long been catered for with ship's messes and railway restaurant cars which are, in effect, travelling restaurants. </p>
+					</div>
+				</div>
+				<div class="col-md-4 w3l-services-grid mt-sm-5 mt-3">
+					<div class="w3ls-services-img mt-md-5 ">
+						<i class="fas fa-utensils"></i>
+					</div>
+					<div class="agileits-services-info">
+						<h4 class="my-sm-3 my-2">Tasty Food</h4>
+						<p>Patrons may be served a themed[16] tasting menu prepared and served by the head chef. Restaurants can require a minimum party[17] and charge a higher flat fee. </p>
+					</div>
+				</div>
+			</div>
+			<div class="row w3-services-grids">
+				<div class="col-md-4 w3l-services-grid mt-md-0 mt-sm-5 mt-3">
+						<div class="w3ls-services-img">
+								<i class="fas fa-users"></i>
+							</div>
+							<div class="agileits-services-info">
+								<h4 class="my-sm-3 my-2">100% satisfied customers</h4>
+								<p>Our restaurant will have various waiting staff to serve food, beverages and alcoholic drinks, including busboys who remove used dishes and cutlery </p>
+							</div>
+					
+				</div>
+				<div class="col-md-4 w3l-services-grid mt-sm-5 mt-3">
+						<div class="w3ls-services-img mt-md-5">
+								<i class="fas fa-phone"></i>
+							</div>
+							<div class="agileits-services-info">
+								<h4 class="my-sm-3 my-2">24x7 Customer Support</h4>
+								<p>You can get any type of information about our restaurant by clicking contact us page. </p>
+							</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	
+<!--reviews_sec-->
+	<section class="banner-bottom reviews_sec py-5" id="testimonials">
+		<div class="container py-md-3">
+			 <div class="w3-head-all mb-3 w3-head-col">
+		         <h3>Testimonial</h3>
+		       </div>
+			<div class="inner-sec">
+				<div class="flexslider mx-auto">
+					<ul class="slides">
+						<li>
+							<div class="row">
+								<div class="col-md-3 testimonials_grid-inn">
+
+									<img src="images/w1.png" alt=" " class="img-fluid" />
+								</div>
+								<div class="col-md-9 testimonials_grid text-left">
+									<h3>Chef Sujan Shrestha</h3>
+									<i>Nepal</i>
+								<p><span>"</span>Sujan Shrestha thought Middle Eastern dessert was not his speciality. But the humble chef from Nepal managed to win the judge's heart with his cooking of Kanafeh with apple tea during his appearance in the cooking show "The Chef's Line" on SBS TV<span>"</span></p>
+								</div>
+							</div>
+						</li>
+						<li>                              
+							<div class="row">
+								<div class="col-md-3 testimonials_grid-inn">
+
+									<img src="images/w2.jpg" alt=" " class="img-fluid" />
+								</div>
+								<div class="col-md-9 testimonials_grid text-left">
+									<h3> Chef Alain Ducasse</h3>
+									<i>French</i>
+									<p><span>"</span>He is a Monégasque chef. He formerly held French nationality. He operates a number of restaurants including Alain Ducasse at The Dorchester which holds three stars (the top ranking) in the Michelin Guide<span>"</span></p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="row">
+								<div class="col-md-3 testimonials_grid-inn">
+
+
+									<img src="images/w3.jpg" alt=" " class="img-fluid" />
+								</div>
+								<div class="col-md-9 testimonials_grid text-left">
+									<h3>Chef Massimo Bottura</h3>
+									<i>Italy</i>
+									<p><span>"</span>He is an Italian restaurateur and the chef patron of Osteria Francescana, a three-Michelin-star restaurant based in Modena,[1] Italy which has been listed in the top 5 at The World’s 50 Best Restaurant Awards since 2010 and received top ratings from ESPRESSO, Gambero Rosso and the Touring Club guides.<span>"</span></p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!---->
+	<!--//main-->
+
+      	  <!-- footer section -->
+<section class="newsletter text-center py-5">
+	<div class="container py-lg-3">
+		<div class="subscribe_inner">
+			<h4 class="mb-4">Subscribe Us</h4>
+			<p class="mb-4">Subscribe to our Newsletter to get latest offers from our Chief. </p>
+			<form action="#" method="post" class="subscribe_form">
+				<input class="form-control" type="email" placeholder="Enter Your Email..." required="">
+				<button type="submit" class="btn1 btn-primary submit"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>
+			</form>
+			<div class="social mt-5">
+				<ul class="d-flex mt-4 justify-content-center">
+			<li class="mx-2"><a href="https://www.facebook.com/"><span class="fab fa-facebook-f"></span></a></li>
+			<li class="mx-2"><a href="https://www.twitter.com/"><span class="fab fa-twitter"></span></a></li>
+			<li class="mx-2"><a href="https://www.gmail.com/"><span class="fab fa-google-plus"></span></a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="copyright mt-5">
+			<p>©2019 Crunchy Restaurant. All Rights Reserved | Design by Sajan Manandhar</p>
+		</div>
+	</div>
+</section>
+<!-- //footer section -->
+	  
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase text-center" id="exampleModalLongTitle"> Hotel zone</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Vivamus eget est in odio tempor interdum. Mauris maximus fermentum arcu, ac finibus ante. Sed mattis risus at ipsum elementum, ut auctor turpis cursus. Sed sed odio pharetra, aliquet velit cursus, vehicula enim. Mauris porta aliquet magna, eget laoreet ligula.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <script src='js/jquery-2.2.3.min.js'></script>
+	<script src="js/responsiveslides.min.js"></script>
+	<script>
+
+		$(function () {
+			$("#slider4").responsiveSlides({
+				auto: true,
+				pager: false,
+				nav: true,
+				speed: 500,
+				namespace: "callbacks",
+				before: function () {
+					$('.events').append("<li>before event fired.</li>");
+				},
+				after: function () {
+					$('.events').append("<li>after event fired.</li>");
+				}
+			});
+
+		});
+	</script>
+
+	<script src="js/simpleLightbox.js"></script>
+	<script>
+		$('.proj_gallery_grid a').simpleLightbox();
+	</script>
+
+	<script defer src="js/jquery.flexslider.js"></script>
+	<script>
+		$(window).load(function () {
+			$('.flexslider').flexslider({
+				animation: "slide",
+				start: function (slider) {
+					$('body').removeClass('loading');
+				}
+			});
+		});
+	</script>
+				<link rel="stylesheet" href="css/jquery-ui.css" />
+				<script src="js/jquery-ui.js"></script>
+				  <script>
+						  $(function() {
+							$( "#datepicker,#datepicker1,#datepicker2,#datepicker3" ).datepicker();
+						  });
+				  </script>
+	<script src="js/odometer.js"></script>
+	<script>
+		window.odometerOptions = {
+			format: '(ddd).dd'
+		};
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats1').html(25);
+		}, 1500);
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats2').html(330);
+		}, 1500);
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats3').html(542);
+		}, 1500);
+	</script>
+	<script>
+		setTimeout(function () {
+			jQuery('#w3l_stats4').html(222);
+		}, 1500);
+	</script>
+      <script  src="js/move-top.js"></script>
+      <script  src="js/easing.js"></script>
+      <script >
+         jQuery(document).ready(function ($) {
+         	$(".scroll").click(function (event) {
+         		event.preventDefault();
+         		$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+         	});
+         });
+      </script>
+      <script>
+         $(document).ready(function () {
+         
+         	$().UItoTop({ easingType: 'easeOutQuart' });
+         
+         });
+      </script>
+
+      <script src="js/bootstrap.js"></script>
+   </body>
+</html>
